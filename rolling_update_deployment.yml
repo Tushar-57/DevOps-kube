@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: jenkins-deployment
+spec: 
+  replicas: 3
+  selector: 
+    matchLabels: 
+      env: production
+  template: 
+    metadata: 
+      labels: 
+        env: production
+      name: kube-jenkin-pod
+    spec: 
+        containers: 
+           - name: jenkin-container
+             image: vimal13/apache-webserver-php:v1
